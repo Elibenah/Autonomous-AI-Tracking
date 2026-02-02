@@ -1,11 +1,15 @@
 📝 README.md - Autonomous Regional Traffic Analysis System (Updated)🛡️ Project OverviewThis repository contains an implementation of an Autonomous Regional Traffic Analysis System utilizing Deep Learning models for real-time object detection, persistent tracking, and statistical analysis in video streams. The project serves as a robust proof-of-concept for intelligent surveillance and situational awareness applications, highly relevant to fields requiring reliable computer vision and data integrity (e.g., defense and security).Key Capabilities:Real-Time Object Detection: Identifying common objects such as vehicles and pedestrians using state-of-the-art YOLO models.Persistent Tracking: Assigning a unique, stable ID to each detected object across successive video frames using advanced tracking algorithms (ByteTrack/DeepSORT).Statistical Analysis (Dwell Time): Functional module that calculates quantitative data (e.g., total observation time) for each tracked object.Data Reporting (Planned): Generating structured data reports (CSV/JSON) and visualizations for strategic analysis.🚀 Technologies UsedThis project relies on a modern computer vision stack, demonstrating proficiency in both core AI frameworks and engineering best practices.ComponentTechnologyRoleStatusCore FrameworkUltralytics (YOLOv8)Integrated framework for detection, tracking, and prediction.FunctionalDetection ModelYOLOv8nSingle-Shot Detector for high performance and speed.FunctionalTracking AlgorithmByteTrack / DeepSORTMaintaining object identity across frames (integrated via Ultralytics).FunctionalStatistical AnalysisCustom Python Script (analyze_tracking.py)Extracts Dwell Time and generates quantitative metrics.FunctionalComputer VisionOpenCV (cv2)Handling video stream processing, frame manipulation, and visualization.FunctionalLanguagePython 3.xPrimary development language.Functional⚙️ Installation and SetupFollow these steps to set up the environment and run the system.Prerequisites: Ensure you have Python 3.8+ installed on your system.Environment Setup: It is strongly recommended to use a virtual environment to manage dependencies:Bash# Create and activate a virtual environment
 python -m venv ai_project_env
-source ai_project_env/bin/activate  # Linux/Mac
-# OR: ai_project_env\Scripts\activate  # Windows
+source ai_project_env/bin/activate # Linux/Mac
+
+# OR: ai_project_env\Scripts\activate # Windows
+
 Dependency Installation: We use the unified ultralytics package for both detection and tracking:Bash# Install the Ultralytics package (includes YOLOv8 and tracking dependencies)
 pip install ultralytics
+
 # Ensure OpenCV is installed
-pip install opencv-python 
+
+pip install opencv-python
 🏃 Getting StartedThe project can be run in two modes: visual tracking and data analysis.1. Visual Tracking (Running the Base System)This command runs the detection and tracking simultaneously and saves the processed video output.Bash# Ensure your video file is located at data/videos/video.mp4
 yolo track predict model=yolov8n.pt source=data/videos/video.mp4
 Output: The resulting video file, showing the bounding boxes and the unique ID number of each tracked object, will be saved to the runs/detect/predict directory (or a custom path if defined).2. Statistical Analysis (Generating the Dwell Time Report)This command executes the custom Python script (analyze_tracking.py) to process the tracking data and generate a statistical report on object observation time.Bashpython analyze_tracking.py
